@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+
 public class TypewriterEffect : MonoBehaviour
 {
     [SerializeField] private float charactersPerSecond = 30f;
@@ -10,10 +11,16 @@ public class TypewriterEffect : MonoBehaviour
     private float timer;
     private int visibleCount;
     private bool finished;
+    [SerializeField] private AudioClip typingSound;
+    [SerializeField] private AudioSource audioSource;
+
 
     void Awake()
     {
         textComponent = GetComponent<TMP_Text>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
     }
 
     void OnEnable()
@@ -23,6 +30,12 @@ public class TypewriterEffect : MonoBehaviour
         visibleCount = 0;
         timer = 0f;
         finished = false;
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
+        if (audioSource != null && typingSound != null)
+            audioSource.PlayOneShot(typingSound);
+
     }
 
     void Update()
