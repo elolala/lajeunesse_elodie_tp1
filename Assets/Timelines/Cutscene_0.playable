@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 11
     m_ClipIn: 0
     m_Asset: {fileID: 6614227722177938578}
-    m_Duration: 5
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: -8492552538157478375}
     m_EaseInDuration: 0
@@ -313,10 +313,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 3
     m_ClipIn: 0
     m_Asset: {fileID: 1967743405226040892}
-    m_Duration: 5
+    m_Duration: 12
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6709560611084813484}
     m_EaseInDuration: 0
@@ -364,10 +364,61 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CM_Crab
   - m_Version: 1
-    m_Start: 13.783333333333333
+    m_Start: 15
     m_ClipIn: 0
     m_Asset: {fileID: 8602588971026499243}
     m_Duration: 5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6709560611084813484}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: CM_Gameplay
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -6182001203662997889}
+    m_Duration: 3
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6709560611084813484}
     m_EaseInDuration: 0
@@ -431,10 +482,26 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM_Gameplay
+    m_DisplayName: CM_Intro
   m_Markers:
     m_Objects: []
   TrackPriority: 0
+--- !u!114 &-6182001203662997889
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineShot
+  DisplayName: 
+  VirtualCamera:
+    exposedName: 9ea4ab9c5165bb44e943f733bc1643fd
+    defaultValue: {fileID: 0}
 --- !u!114 &-5654034456090809507
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,10 +588,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 7
     m_ClipIn: 0
     m_Asset: {fileID: -2581062163153806607}
-    m_Duration: 5
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: 799678042357474060}
     m_EaseInDuration: 0
@@ -724,10 +791,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 4
     m_ClipIn: 0
     m_Asset: {fileID: -1244610205190477371}
-    m_Duration: 5
+    m_Duration: 3
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6868465645046655809}
     m_EaseInDuration: 0
