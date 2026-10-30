@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 public class DigSpot : MonoBehaviour
 {
     [Header("Setup")]
-    [SerializeField] private bool hasShell;
+    [SerializeField] private GameObject shellObject;      // the seashell model
+    [SerializeField] private GameObject[] junkObjects;    // branches, starfish, etc.
     [SerializeField] private GameObject highlightObject;
-    [SerializeField] private GameObject hiddenObject;
     [SerializeField] private GameObject dugPrefab;
+
+    [Header("Reveal Position")]
+    [SerializeField] private Transform revealPoint;       // where the item appears
 
     [Header("Digging")]
     [SerializeField] private int clicksToDig = 15;
@@ -23,6 +26,8 @@ public class DigSpot : MonoBehaviour
     private float progress;
     private bool playerInRange;
     private bool dug;
+    private GameObject myItem;
+    private bool hasShell;
 
     public bool IsDug => dug;
 
@@ -30,7 +35,34 @@ public class DigSpot : MonoBehaviour
     {
         GetComponent<Collider>().isTrigger = true;
         if (highlightObject != null) highlightObject.SetActive(false);
-        if (hiddenObject != null) hiddenObject.SetActive(false);
+
+        if (shellObject != null) shellObject.SetActive(false);
+        if (junkObjects != null)
+        {
+            foreach (var j in junkObjects)
+                if (j != null) j.SetActive(false);
+        }
+    }
+
+    /// <summary>Called once by DigManager on scene start.</summary>
+    public void AssignLoot(bool shell)
+    {
+        hasShell = shell;
+
+        if (shell)
+        {
+            myItem = shellObject;
+        }
+        else if (junkObjects != null && junkObjects.Length > 0)
+        {
+            myItem = junkObjects[Random.Range(0, junkObjects.Length)];
+        }
+
+        if (myItem == null) return;
+
+        Transform dest = revealPoint != null ? revealPoint : transform;
+        myItem.transform.SetPositionAndRotation(dest.position, dest.rotation);
+        myItem.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,8 +123,8 @@ public class DigSpot : MonoBehaviour
         if (dugPrefab != null)
             Instantiate(dugPrefab, transform.position, transform.rotation);
 
-        if (hiddenObject != null)
-            hiddenObject.SetActive(true);
+        if (myItem != null)
+            myItem.SetActive(true);
 
         if (hasShell)
             DigManager.Instance.CollectShell(transform.position);
