@@ -4281,8 +4281,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 0}
-  junkObjects: []
+  shellObject: {fileID: 836952552}
+  junkObjects:
+  - {fileID: 346175506}
+  - {fileID: 1257477960}
+  - {fileID: 1620689387}
+  - {fileID: 1596620355}
+  - {fileID: 1060897438}
+  - {fileID: 2126937464}
+  - {fileID: 292637922}
+  - {fileID: 938378355}
+  - {fileID: 853114645}
+  - {fileID: 630683422}
+  - {fileID: 1026553853}
   highlightObject: {fileID: 0}
   dugPrefab: {fileID: 0}
   revealPoint: {fileID: 0}
@@ -5023,6 +5034,8 @@ GameObject:
   - component: {fileID: 478918098}
   - component: {fileID: 478918100}
   - component: {fileID: 478918099}
+  - component: {fileID: 478918101}
+  - component: {fileID: 478918102}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
@@ -5062,7 +5075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5087,6 +5100,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478918097}
   m_CullTransparentMesh: 1
+--- !u!225 &478918101
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478918097}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!95 &478918102
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478918097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &486102315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7487,7 +7534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &689592476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16034,7 +16081,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 9b1ec7041c8d3f949bbd1bc4eeda7015, type: 2}
   m_InitialState: 1
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -16056,12 +16103,16 @@ PlayableDirector:
     value: {fileID: 992294841}
   - key: {fileID: 6557560371395708840, guid: 9b1ec7041c8d3f949bbd1bc4eeda7015, type: 2}
     value: {fileID: 1484537173}
+  - key: {fileID: -9065502505932992156, guid: 9b1ec7041c8d3f949bbd1bc4eeda7015, type: 2}
+    value: {fileID: 478918102}
   m_ExposedReferences:
     m_References:
     - 9ea4ab9c5165bb44e943f733bc1643fd: {fileID: 1860150125}
     - 47342cdd10197954d86f0a9b0e82bbba: {fileID: 1538688390}
     - f1926846be0010a4ab6f98275982fd7c: {fileID: 1860150125}
+    - 40278fe3718588f40a7738ca336de4d3: {fileID: 478918097}
     - e42d2b8cea1443a43a84cd9d6bc3f9f8: {fileID: 395476664}
+    - 6d922dd1a1a301548920084dfdfe5b69: {fileID: 478918097}
     - 5dac848d7f62b3f4b8bd57a4cb40e614: {fileID: 2561461987353226716}
     - fab040d79c892c44bad5a109ae01150d: {fileID: 1538688390}
     - 22b6e078dc43aae4d9bc6fc832ef08ee: {fileID: 2561461987353226716}
@@ -21855,7 +21906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 8
-  SprintSpeed: 12
+  SprintSpeed: 14
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -21870,7 +21921,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
-  FootstepAudioVolume: 0.3
+  FootstepAudioVolume: 0.6
   JumpHeight: 1.2
   Gravity: -15
   JumpTimeout: 0.3
