@@ -6,13 +6,16 @@ using UnityEngine.InputSystem;
 public class DigSpot : MonoBehaviour
 {
     [Header("Setup")]
-    [SerializeField] private GameObject shellObject;      // the seashell model
-    [SerializeField] private GameObject[] junkObjects;    // branches, starfish, etc.
+    [SerializeField] private GameObject shellObject;
+    [SerializeField] private GameObject[] junkObjects;
     [SerializeField] private GameObject highlightObject;
     [SerializeField] private GameObject dugPrefab;
 
+    [Header("Prompt")]
+    [SerializeField] private GameObject promptUI;         // le Canvas avec le bouton souris
+
     [Header("Reveal Position")]
-    [SerializeField] private Transform revealPoint;       // where the item appears
+    [SerializeField] private Transform revealPoint;
 
     [Header("Digging")]
     [SerializeField] private int clicksToDig = 15;
@@ -35,6 +38,7 @@ public class DigSpot : MonoBehaviour
     {
         GetComponent<Collider>().isTrigger = true;
         if (highlightObject != null) highlightObject.SetActive(false);
+        if (promptUI != null) promptUI.SetActive(false);
 
         if (shellObject != null) shellObject.SetActive(false);
         if (junkObjects != null)
@@ -44,7 +48,6 @@ public class DigSpot : MonoBehaviour
         }
     }
 
-    /// <summary>Called once by DigManager on scene start.</summary>
     public void AssignLoot(bool shell)
     {
         hasShell = shell;
@@ -72,8 +75,13 @@ public class DigSpot : MonoBehaviour
         playerInRange = true;
         onPlayerEnter.Invoke();
 
-        if (DigManager.Instance != null && DigManager.Instance.HasShovel && highlightObject != null)
+        bool hasShovel = DigManager.Instance != null && DigManager.Instance.HasShovel;
+
+        if (highlightObject != null && hasShovel)
             highlightObject.SetActive(true);
+
+        if (promptUI != null && hasShovel)
+            promptUI.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -84,6 +92,7 @@ public class DigSpot : MonoBehaviour
         onPlayerExit.Invoke();
 
         if (highlightObject != null) highlightObject.SetActive(false);
+        if (promptUI != null) promptUI.SetActive(false);
         if (DigManager.Instance != null) DigManager.Instance.HideProgress();
         progress = 0f;
     }
@@ -95,6 +104,9 @@ public class DigSpot : MonoBehaviour
 
         if (highlightObject != null && !highlightObject.activeSelf)
             highlightObject.SetActive(true);
+
+        if (promptUI != null && !promptUI.activeSelf)
+            promptUI.SetActive(true);
 
         if (progress > 0f)
         {
@@ -128,6 +140,8 @@ public class DigSpot : MonoBehaviour
 
         if (hasShell)
             DigManager.Instance.CollectShell(transform.position);
+
+        if (promptUI != null) promptUI.SetActive(false);
 
         onDigComplete.Invoke();
         gameObject.SetActive(false);
