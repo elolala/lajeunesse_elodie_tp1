@@ -1169,6 +1169,8 @@ MonoBehaviour:
   menuPanel: {fileID: 0}
   fadeImage: {fileID: 1832093512}
   fadeDuration: 2
+  musicSource: {fileID: 1199672803}
+  musicFadeDuration: 2
   gameSceneName: ile
 --- !u!1001 &985172883
 PrefabInstance:

@@ -13,9 +13,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject storyPanel;
     [SerializeField] private GameObject menuPanel;
 
-    [Header("Fondu")]
+    [Header("Fondu visuel")]
     [SerializeField] private Image fadeImage;
-    [SerializeField] private float fadeDuration = 1f;
+    [SerializeField] private float fadeDuration = 1.5f;
+
+    [Header("Musique")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private float musicFadeDuration = 1.5f;
 
     [Header("Scène")]
     [SerializeField] private string gameSceneName = "ile";
@@ -39,12 +43,13 @@ public class MainMenu : MonoBehaviour
 
         Debug.Log("MainMenu pret. Start=" + (startButton != null) +
                   " Story=" + (storyButton != null) +
-                  " Fade=" + (fadeImage != null));
+                  " Fade=" + (fadeImage != null) +
+                  " Musique=" + (musicSource != null));
     }
 
     public void OpenStory()
     {
-        Debug.Log("=== HISTOIRE clique ===");
+        Debug.Log(">>> BOUTON HISTOIRE <<<");
 
         if (storyPanel != null) storyPanel.SetActive(true);
         if (menuPanel != null) menuPanel.SetActive(false);
@@ -58,7 +63,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("=== COMMENCER clique ===");
+        Debug.Log(">>> BOUTON COMMENCER <<<");
 
         if (busy) return;
         busy = true;
@@ -67,6 +72,8 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator StartGameRoutine()
     {
+        // Le blanc monte et la musique baisse en meme temps
+        StartCoroutine(FadeMusic());
         yield return StartCoroutine(FadeTo(1f));
 
         Debug.Log("Chargement de la scene : " + gameSceneName);
@@ -97,5 +104,23 @@ public class MainMenu : MonoBehaviour
         Color final = fadeImage.color;
         final.a = targetAlpha;
         fadeImage.color = final;
+    }
+
+    private IEnumerator FadeMusic()
+    {
+        if (musicSource == null) yield break;
+
+        float startVolume = musicSource.volume;
+        float t = 0f;
+
+        while (t < musicFadeDuration)
+        {
+            t += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, t / musicFadeDuration);
+            yield return null;
+        }
+
+        musicSource.volume = 0f;
+        musicSource.Stop();
     }
 }
