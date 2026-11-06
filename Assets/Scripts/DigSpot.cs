@@ -5,145 +5,258 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider))]
 public class DigSpot : MonoBehaviour
 {
-    [Header("Setup")]
+    [Header("Loot")]
     [SerializeField] private GameObject shellObject;
     [SerializeField] private GameObject[] junkObjects;
-    [SerializeField] private GameObject highlightObject;
+    [SerializeField] private Transform revealPoint;
     [SerializeField] private GameObject dugPrefab;
 
-    [Header("Prompt")]
-    [SerializeField] private GameObject promptUI;         // le Canvas avec le bouton souris
-
-    [Header("Reveal Position")]
-    [SerializeField] private Transform revealPoint;
+    [Header("Visuals")]
+    [SerializeField] private Transform sandVisual;
+    [SerializeField] private GameObject highlightObject;
+    [SerializeField] private GameObject promptUI;
 
     [Header("Digging")]
-    [SerializeField] private int clicksToDig = 15;
-    [SerializeField] private float drainSpeed = 2f;
+    [SerializeField, Min(1)] private int clicksToDig = 15;
+
+    [Tooltip("Size of the sand just before it disappears.")]
+    [SerializeField, Range(0.05f, 1f)]
+    private float finalScale = 0.15f;
 
     [Header("Events")]
     [SerializeField] private UnityEvent onPlayerEnter;
     [SerializeField] private UnityEvent onPlayerExit;
     [SerializeField] private UnityEvent onDigComplete;
 
-    private float progress;
-    private bool playerInRange;
-    private bool dug;
+    private readonly System.Collections.Generic.HashSet<Collider>
+        playerColliders = new System.Collections.Generic.HashSet<Collider>();
+
+    private Vector3 originalSandScale;
     private GameObject myItem;
     private bool hasShell;
+    private bool dug;
+    private int clicks;
 
     public bool IsDug => dug;
 
-    void Start()
+    private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
-        if (highlightObject != null) highlightObject.SetActive(false);
-        if (promptUI != null) promptUI.SetActive(false);
 
-        if (shellObject != null) shellObject.SetActive(false);
+        if (sandVisual == transform)
+        {
+            Debug.LogWarning(
+                name + ": Sand Visual must be a separate child, " +
+                "not the object carrying DigSpot.",
+                this
+            );
+
+            sandVisual = null;
+        }
+
+        if (sandVisual != null)
+            originalSandScale = sandVisual.localScale;
+
+        SetInteractionVisuals(false);
+
+        // Hide scene objects used as loot templates.
+        // Assets/prefabs in the Project window are not changed.
+        HideSceneTemplate(shellObject);
+
         if (junkObjects != null)
         {
-            foreach (var j in junkObjects)
-                if (j != null) j.SetActive(false);
+            foreach (GameObject item in junkObjects)
+                HideSceneTemplate(item);
         }
     }
 
+    private void HideSceneTemplate(GameObject template)
+    {
+        if (template != null && template.scene.IsValid())
+            template.SetActive(false);
+    }
+
+    // Called by DigManager at the beginning of the scene.
     public void AssignLoot(bool shell)
     {
         hasShell = shell;
 
+        if (myItem != null)
+            Destroy(myItem);
+
+        GameObject template = null;
+
         if (shell)
         {
-            myItem = shellObject;
+            template = shellObject;
         }
         else if (junkObjects != null && junkObjects.Length > 0)
         {
-            myItem = junkObjects[Random.Range(0, junkObjects.Length)];
+            template = junkObjects[Random.Range(0, junkObjects.Length)];
         }
 
-        if (myItem == null) return;
+        if (template == null)
+        {
+            Debug.LogWarning(
+                name + ": No loot object assigned for this pile.",
+                this
+            );
+            return;
+        }
 
-        Transform dest = revealPoint != null ? revealPoint : transform;
-        myItem.transform.SetPositionAndRotation(dest.position, dest.rotation);
+        Transform destination = revealPoint != null
+            ? revealPoint
+            : transform;
+
+        // No parent: the item survives when the pile is disabled.
+        myItem = Instantiate(
+            template,
+            destination.position,
+            destination.rotation
+        );
+
+        // Preserve the visible size of a scene template.
+        if (template.scene.IsValid())
+            myItem.transform.localScale = template.transform.lossyScale;
+
         myItem.SetActive(false);
+    }
+
+    private bool IsPlayer(Collider other)
+    {
+        // Supports colliders on children of the tagged player.
+        Transform current = other.transform;
+
+        while (current != null)
+        {
+            if (current.CompareTag("Player"))
+                return true;
+
+            current = current.parent;
+        }
+
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (dug || !other.CompareTag("Player")) return;
+        if (dug || !IsPlayer(other))
+            return;
 
-        playerInRange = true;
-        onPlayerEnter.Invoke();
+        bool wasOutside = playerColliders.Count == 0;
+        playerColliders.Add(other);
 
-        bool hasShovel = DigManager.Instance != null && DigManager.Instance.HasShovel;
-
-        if (highlightObject != null && hasShovel)
-            highlightObject.SetActive(true);
-
-        if (promptUI != null && hasShovel)
-            promptUI.SetActive(true);
+        if (wasOutside)
+            onPlayerEnter.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!playerColliders.Remove(other))
+            return;
 
-        playerInRange = false;
-        onPlayerExit.Invoke();
+        if (playerColliders.Count == 0)
+        {
+            SetInteractionVisuals(false);
 
-        if (highlightObject != null) highlightObject.SetActive(false);
-        if (promptUI != null) promptUI.SetActive(false);
-        if (DigManager.Instance != null) DigManager.Instance.HideProgress();
-        progress = 0f;
+            if (DigManager.Instance != null)
+                DigManager.Instance.HideProgress();
+
+            onPlayerExit.Invoke();
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (dug || !playerInRange) return;
-        if (DigManager.Instance == null || !DigManager.Instance.HasShovel) return;
+        if (dug)
+            return;
 
-        if (highlightObject != null && !highlightObject.activeSelf)
-            highlightObject.SetActive(true);
+        playerColliders.RemoveWhere(
+            collider => collider == null ||
+                        !collider.enabled ||
+                        !collider.gameObject.activeInHierarchy
+        );
 
-        if (promptUI != null && !promptUI.activeSelf)
-            promptUI.SetActive(true);
+        DigManager manager = DigManager.Instance;
 
-        if (progress > 0f)
+        bool canDig = playerColliders.Count > 0 &&
+                      manager != null &&
+                      manager.HasShovel;
+
+        SetInteractionVisuals(canDig);
+
+        if (!canDig)
+            return;
+
+        bool clicked = Mouse.current != null &&
+                       Mouse.current.leftButton.wasPressedThisFrame;
+
+        if (!clicked)
+            return;
+
+        clicks++;
+
+        float progress = Mathf.Clamp01(
+            (float)clicks / Mathf.Max(1, clicksToDig)
+        );
+
+        // Shrink only the sand visual, not the trigger or prompt.
+        if (sandVisual != null)
         {
-            progress -= drainSpeed * Time.deltaTime;
-            if (progress < 0f) progress = 0f;
+            float multiplier = Mathf.Lerp(1f, finalScale, progress);
+            sandVisual.localScale = originalSandScale * multiplier;
         }
 
-        bool clicked = Mouse.current != null
-                    && Mouse.current.leftButton.wasPressedThisFrame;
+        manager.ShowProgress(progress);
 
-        if (clicked)
+        if (clicks >= Mathf.Max(1, clicksToDig))
+            CompleteDig();
+    }
+
+    private void SetInteractionVisuals(bool visible)
+    {
+        if (highlightObject != null &&
+            highlightObject.activeSelf != visible)
         {
-            progress += 1f;
-            DigManager.Instance.ShowProgress(progress / clicksToDig);
-
-            if (progress >= clicksToDig)
-                CompleteDig();
+            highlightObject.SetActive(visible);
         }
+
+        if (promptUI != null && promptUI.activeSelf != visible)
+            promptUI.SetActive(visible);
     }
 
     private void CompleteDig()
     {
         dug = true;
-        DigManager.Instance.ShowProgress(1f);
+        SetInteractionVisuals(false);
+
+        DigManager manager = DigManager.Instance;
+
+        if (manager != null)
+            manager.HideProgress();
 
         if (dugPrefab != null)
-            Instantiate(dugPrefab, transform.position, transform.rotation);
+        {
+            Instantiate(
+                dugPrefab,
+                transform.position,
+                transform.rotation
+            );
+        }
 
         if (myItem != null)
             myItem.SetActive(true);
 
-        if (hasShell)
-            DigManager.Instance.CollectShell(transform.position);
-
-        if (promptUI != null) promptUI.SetActive(false);
+        if (hasShell && myItem != null && manager != null)
+            manager.CollectShell(transform.position);
 
         onDigComplete.Invoke();
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        playerColliders.Clear();
+        SetInteractionVisuals(false);
     }
 }

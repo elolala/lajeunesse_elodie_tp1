@@ -234,12 +234,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -1942,12 +1943,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -3987,12 +3989,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -4289,51 +4292,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &414923732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 1455005036}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &414923737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414923732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1257477960}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 1507937326}
-  revealPoint: {fileID: 0}
-  clicksToDig: 10
-  drainSpeed: 2
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &414923741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -6853,12 +6811,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -13194,12 +13153,109 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
+  onPlayerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDigComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1272303786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272303788}
+  - component: {fileID: 1272303787}
+  - component: {fileID: 1272303789}
+  m_Layer: 0
+  m_Name: DigSpotRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1272303787
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272303786}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1272303788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272303786}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -84.48, y: 2.66, z: -26.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 414923741}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272303789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272303786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
+  shellObject: {fileID: 836952552}
+  junkObjects:
+  - {fileID: 346175506}
+  - {fileID: 1257477960}
+  - {fileID: 1620689387}
+  - {fileID: 1596620355}
+  - {fileID: 1060897438}
+  - {fileID: 2126937464}
+  - {fileID: 292637922}
+  - {fileID: 938378355}
+  - {fileID: 853114645}
+  - {fileID: 630683422}
+  - {fileID: 1026553853}
+  revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 414923741}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 1507937326}
+  clicksToDig: 10
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -14721,7 +14777,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1272303788}
     m_Modifications:
     - target: {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_Convex
@@ -14733,27 +14789,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.6075
+      value: 3.6074998
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.6075
+      value: 3.6075006
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.6075
+      value: 3.6075006
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -84.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14787,16 +14843,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01 (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1507937330}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 414923737}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
 --- !u!1001 &1470523632
 PrefabInstance:
@@ -15946,12 +16000,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -16479,7 +16534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &1617712385
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -17294,12 +17349,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -17719,12 +17775,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -19154,12 +19211,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -21823,12 +21881,13 @@ MonoBehaviour:
   - {fileID: 853114645}
   - {fileID: 630683422}
   - {fileID: 1026553853}
-  highlightObject: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  promptUI: {fileID: 0}
   revealPoint: {fileID: 0}
+  dugPrefab: {fileID: 0}
+  sandVisual: {fileID: 0}
+  highlightObject: {fileID: 0}
+  promptUI: {fileID: 0}
   clicksToDig: 10
-  drainSpeed: 2
+  finalScale: 0.15
   onPlayerEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -25156,7 +25215,6 @@ SceneRoots:
   - {fileID: 3965518}
   - {fileID: 1111063583}
   - {fileID: 1399963491}
-  - {fileID: 1455005036}
   - {fileID: 99021407}
   - {fileID: 1252131167}
   - {fileID: 1439866765}
@@ -25302,3 +25360,4 @@ SceneRoots:
   - {fileID: 689592477}
   - {fileID: 536861786}
   - {fileID: 1386769632}
+  - {fileID: 1272303788}
