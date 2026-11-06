@@ -69,6 +69,12 @@ public class DigManager : MonoBehaviour
         progressBar.transform.parent.gameObject.SetActive(false);
     }
 
+    // Appelé quand le joueur quitte un tas de sable.
+    public void ResetProgress()
+    {
+        HideProgress();
+    }
+
     public void CollectShell(Vector3 pos)
     {
         shellsFound++;
@@ -76,8 +82,8 @@ public class DigManager : MonoBehaviour
 
         if (shellsFound >= shellsNeeded)
         {
-            Debug.Log("All shells found!");
-            // Hook your cutscene / win UI here
+            Debug.Log("Tous les coquillages trouvés !");
+            // Branche ta cutscene / ton UI de victoire ici
         }
     }
 }

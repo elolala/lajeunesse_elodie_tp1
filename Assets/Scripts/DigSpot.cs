@@ -16,10 +16,15 @@ public class DigSpot : MonoBehaviour
     [SerializeField] private GameObject highlightObject;
     [SerializeField] private GameObject promptUI;
 
-    [Header("Digging")]
-    [SerializeField, Min(1)] private int clicksToDig = 15;
+    [Header("Son")]
+    [SerializeField] private AudioSource digSound;
+    [SerializeField] private AudioClip digClip;
+    [SerializeField, Range(1, 3)] private int playSoundEvery = 1;
 
-    [Tooltip("Size of the sand just before it disappears.")]
+    [Header("Digging")]
+    [SerializeField, Min(1)] private int clicksToDig = 10;
+
+    [Tooltip("Taille du sable juste avant qu'il disparaisse.")]
     [SerializeField, Range(0.05f, 1f)]
     private float finalScale = 0.15f;
 
@@ -46,8 +51,8 @@ public class DigSpot : MonoBehaviour
         if (sandVisual == transform)
         {
             Debug.LogWarning(
-                name + ": Sand Visual must be a separate child, " +
-                "not the object carrying DigSpot.",
+                name + ": Sand Visual doit être un enfant séparé, " +
+                "pas l'objet qui porte DigSpot.",
                 this
             );
 
@@ -59,8 +64,8 @@ public class DigSpot : MonoBehaviour
 
         SetInteractionVisuals(false);
 
-        // Hide scene objects used as loot templates.
-        // Assets/prefabs in the Project window are not changed.
+        // Cache les objets de scène servant de modèles de loot.
+        // Les prefabs du Project window ne sont pas modifiés.
         HideSceneTemplate(shellObject);
 
         if (junkObjects != null)
@@ -76,7 +81,7 @@ public class DigSpot : MonoBehaviour
             template.SetActive(false);
     }
 
-    // Called by DigManager at the beginning of the scene.
+    // Appelé par DigManager au début de la scène.
     public void AssignLoot(bool shell)
     {
         hasShell = shell;
@@ -98,7 +103,7 @@ public class DigSpot : MonoBehaviour
         if (template == null)
         {
             Debug.LogWarning(
-                name + ": No loot object assigned for this pile.",
+                name + ": aucun objet de loot assigné à ce tas.",
                 this
             );
             return;
@@ -108,14 +113,14 @@ public class DigSpot : MonoBehaviour
             ? revealPoint
             : transform;
 
-        // No parent: the item survives when the pile is disabled.
+        // Sans parent : l'objet survit quand le tas est désactivé.
         myItem = Instantiate(
             template,
             destination.position,
             destination.rotation
         );
 
-        // Preserve the visible size of a scene template.
+        // Conserve la taille visible d'un modèle de scène.
         if (template.scene.IsValid())
             myItem.transform.localScale = template.transform.lossyScale;
 
@@ -124,7 +129,7 @@ public class DigSpot : MonoBehaviour
 
     private bool IsPlayer(Collider other)
     {
-        // Supports colliders on children of the tagged player.
+        // Gère les colliders placés sur les enfants du joueur tagué.
         Transform current = other.transform;
 
         while (current != null)
@@ -160,7 +165,7 @@ public class DigSpot : MonoBehaviour
             SetInteractionVisuals(false);
 
             if (DigManager.Instance != null)
-                DigManager.Instance.HideProgress();
+                DigManager.Instance.ResetProgress();
 
             onPlayerExit.Invoke();
         }
@@ -196,11 +201,19 @@ public class DigSpot : MonoBehaviour
 
         clicks++;
 
+        // Son de pelle
+        if (digSound != null && digClip != null)
+        {
+            if (playSoundEvery <= 1 || clicks % playSoundEvery == 0)
+                digSound.PlayOneShot(digClip);
+        }
+
         float progress = Mathf.Clamp01(
             (float)clicks / Mathf.Max(1, clicksToDig)
         );
 
-        // Shrink only the sand visual, not the trigger or prompt.
+        // Rétrécit seulement le visuel du sable,
+        // pas le trigger ni l'icône souris.
         if (sandVisual != null)
         {
             float multiplier = Mathf.Lerp(1f, finalScale, progress);
@@ -233,7 +246,7 @@ public class DigSpot : MonoBehaviour
         DigManager manager = DigManager.Instance;
 
         if (manager != null)
-            manager.HideProgress();
+            manager.ResetProgress();
 
         if (dugPrefab != null)
         {
