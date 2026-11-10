@@ -21,6 +21,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private float musicFadeDuration = 1.5f;
 
+    [Header("Souris")]
+    [SerializeField] private bool lockCursorOnStart = true;
+
     [Header("Scène")]
     [SerializeField] private string gameSceneName = "ile";
 
@@ -28,6 +31,10 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        // Dans le menu, le curseur doit rester visible et cliquable.
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (storyPanel != null) storyPanel.SetActive(false);
 
         if (fadeImage != null)
@@ -40,17 +47,10 @@ public class MainMenu : MonoBehaviour
 
         if (startButton != null) startButton.onClick.AddListener(StartGame);
         if (storyButton != null) storyButton.onClick.AddListener(OpenStory);
-
-        Debug.Log("MainMenu pret. Start=" + (startButton != null) +
-                  " Story=" + (storyButton != null) +
-                  " Fade=" + (fadeImage != null) +
-                  " Musique=" + (musicSource != null));
     }
 
     public void OpenStory()
     {
-        Debug.Log(">>> BOUTON HISTOIRE <<<");
-
         if (storyPanel != null) storyPanel.SetActive(true);
         if (menuPanel != null) menuPanel.SetActive(false);
     }
@@ -63,8 +63,6 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log(">>> BOUTON COMMENCER <<<");
-
         if (busy) return;
         busy = true;
         StartCoroutine(StartGameRoutine());
@@ -72,21 +70,22 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator StartGameRoutine()
     {
-        // Le blanc monte et la musique baisse en meme temps
+        // Verrouille la souris pour le jeu.
+        if (lockCursorOnStart)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         StartCoroutine(FadeMusic());
         yield return StartCoroutine(FadeTo(1f));
 
-        Debug.Log("Chargement de la scene : " + gameSceneName);
         SceneManager.LoadScene(gameSceneName);
     }
 
     private IEnumerator FadeTo(float targetAlpha)
     {
-        if (fadeImage == null)
-        {
-            Debug.Log("Pas de Fade Image assignee !");
-            yield break;
-        }
+        if (fadeImage == null) yield break;
 
         fadeImage.gameObject.SetActive(true);
         float start = fadeImage.color.a;
