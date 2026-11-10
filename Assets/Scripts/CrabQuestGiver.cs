@@ -7,17 +7,15 @@ public class CrabQuestGiver : MonoBehaviour
 {
     [Header("Prompt")]
     [SerializeField] private GameObject promptUI;
-    [SerializeField] private GameObject highlightObject;
 
     [Header("Dialogue")]
     [SerializeField] private GameObject dialogueCanvas;
-    [SerializeField] private TMPro.TMP_Text speakerName;
     [SerializeField] private TMPro.TMP_Text dialogueText;
 
-    [Header("Lignes de dialogue")]
+    [Header("Lignes - premiere rencontre")]
     [TextArea(2, 4)]
     [SerializeField]
-    private string[] lines = new string[]
+    private string[] questLines = new string[]
     {
         "Ohé ! Toi là-bas !",
         "J'ai perdu mon coquillage préféré quelque part sur cette plage...",
@@ -25,28 +23,40 @@ public class CrabQuestGiver : MonoBehaviour
         "Rapporte-le-moi et je te donnerai ta première perle."
     };
 
-    [Header("Récompense")]
-    [SerializeField] private int pearlsGiven = 1;
-    [SerializeField] private bool onlyOnce = true;
+    [Header("Lignes - retour du coquillage")]
+    [TextArea(2, 4)]
+    [SerializeField]
+    private string[] rewardLines = new string[]
+    {
+        "Tu l'as trouvé ! Mon coquillage !",
+        "Bravo, tu es un vrai chercheur de trésors !",
+        "Voici ta première perle, tu l'as bien méritée.",
+        "Il t'en reste deux à trouver. Bonne chance !"
+    };
 
-    [Header("Événements")]
-    [SerializeField] private UnityEvent onDialogueStart;
+    [Header("Recompense")]
+    [SerializeField] private int pearlsGiven = 1;
+
+    [Header("Evenements")]
+    [SerializeField] private UnityEvent onQuestStart;
+    [SerializeField] private UnityEvent onRewardStart;
     [SerializeField] private UnityEvent onDialogueEnd;
 
     private readonly System.Collections.Generic.HashSet<Collider>
         playerColliders = new System.Collections.Generic.HashSet<Collider>();
 
     private bool questGiven;
+    private bool rewardGiven;
     private bool talking;
+    private string[] activeLines;
     private int lineIndex;
 
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
-        SetVisuals(false);
 
-        if (dialogueCanvas != null)
-            dialogueCanvas.SetActive(false);
+        if (promptUI != null) promptUI.SetActive(false);
+        if (dialogueCanvas != null) dialogueCanvas.SetActive(false);
     }
 
     private bool IsPlayer(Collider other)
@@ -63,12 +73,7 @@ public class CrabQuestGiver : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!IsPlayer(other)) return;
-
-        bool wasOutside = playerColliders.Count == 0;
         playerColliders.Add(other);
-
-        if (wasOutside && !talking)
-            SetVisuals(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -76,7 +81,9 @@ public class CrabQuestGiver : MonoBehaviour
         if (!playerColliders.Remove(other)) return;
 
         if (playerColliders.Count == 0 && !talking)
-            SetVisuals(false);
+        {
+            if (promptUI != null) promptUI.SetActive(false);
+        }
     }
 
     private void Update()
@@ -93,51 +100,71 @@ public class CrabQuestGiver : MonoBehaviour
         }
 
         if (playerColliders.Count == 0) return;
-        if (onlyOnce && questGiven) return;
 
-        bool pressed = Keyboard.current != null &&
-                       Keyboard.current.eKey.wasPressedThisFrame;
+        bool canReward = ShellPickup.HasShell && !rewardGiven;
+        bool canQuest = !questGiven;
+        bool interactable = canReward || canQuest;
 
-        if (pressed) StartDialogue();
+        if (promptUI != null && promptUI.activeSelf != interactable)
+            promptUI.SetActive(interactable);
+
+        if (!interactable) return;
+        if (Keyboard.current == null) return;
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            if (canReward) StartReward();
+            else StartQuest();
+        }
     }
 
-    private void StartDialogue()
+    private void StartQuest()
     {
-        if (lines == null || lines.Length == 0) return;
-
         talking = true;
         lineIndex = 0;
-        SetVisuals(false);
+        activeLines = questLines;
+        OpenDialogue();
+        onQuestStart.Invoke();
+        LockMovement(true);
+    }
 
-        if (dialogueCanvas != null)
-            dialogueCanvas.SetActive(true);
+    private void StartReward()
+    {
+        talking = true;
+        lineIndex = 0;
+        activeLines = rewardLines;
+        OpenDialogue();
+        onRewardStart.Invoke();
+        LockMovement(true);
+    }
 
-        if (speakerName != null)
-            speakerName.text = "Crabe";
-
+    private void OpenDialogue()
+    {
+        if (promptUI != null) promptUI.SetActive(false);
+        if (dialogueCanvas != null) dialogueCanvas.SetActive(true);
         ShowLine();
-        onDialogueStart.Invoke();
+    }
 
-        MovementLock(true);
+    private void ShowLine()
+    {
+        if (dialogueText != null && activeLines != null &&
+            lineIndex < activeLines.Length)
+        {
+            dialogueText.text = activeLines[lineIndex];
+        }
     }
 
     private void NextLine()
     {
         lineIndex++;
 
-        if (lineIndex >= lines.Length)
+        if (activeLines == null || lineIndex >= activeLines.Length)
         {
             EndDialogue();
             return;
         }
 
         ShowLine();
-    }
-
-    private void ShowLine()
-    {
-        if (dialogueText != null)
-            dialogueText.text = lines[lineIndex];
     }
 
     private void EndDialogue()
@@ -147,42 +174,41 @@ public class CrabQuestGiver : MonoBehaviour
         if (dialogueCanvas != null)
             dialogueCanvas.SetActive(false);
 
-        if (!questGiven)
+        bool wasReward = ShellPickup.HasShell && !rewardGiven;
+
+        if (wasReward)
         {
-            questGiven = true;
+            rewardGiven = true;
+            ShellPickup.HasShell = false;
 
             if (PearlCounter.Instance != null)
                 PearlCounter.Instance.AddPearl(pearlsGiven);
+
+            Debug.Log("Perle obtenue !");
+        }
+        else
+        {
+            questGiven = true;
         }
 
-        MovementLock(false);
+        LockMovement(false);
         onDialogueEnd.Invoke();
 
-        if (playerColliders.Count > 0)
-            SetVisuals(true);
+        if (playerColliders.Count > 0 && promptUI != null)
+            promptUI.SetActive(true);
     }
 
-    private void SetVisuals(bool visible)
-    {
-        if (promptUI != null && promptUI.activeSelf != visible)
-            promptUI.SetActive(visible);
-
-        if (highlightObject != null && highlightObject.activeSelf != visible)
-            highlightObject.SetActive(visible);
-    }
-
-    // Bloque le personnage pendant la discussion.
-    private void MovementLock(bool locked)
+    // Bloque / debloque le personnage en cherchant le controleur par son nom.
+    private void LockMovement(bool locked)
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
-        var controllers = player.GetComponentsInChildren<MonoBehaviour>(true);
-        foreach (var c in controllers)
+        foreach (var mb in player.GetComponentsInChildren<MonoBehaviour>(true))
         {
-            if (c == null) continue;
-            if (c.GetType().Name.Contains("ThirdPersonController"))
-                c.enabled = !locked;
+            if (mb == null) continue;
+            if (mb.GetType().Name.Contains("ThirdPersonController"))
+                mb.enabled = !locked;
         }
     }
 }
