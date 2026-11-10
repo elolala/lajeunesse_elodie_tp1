@@ -16,10 +16,15 @@ public class DigSpot : MonoBehaviour
     [SerializeField] private GameObject highlightObject;
     [SerializeField] private GameObject promptUI;
 
-    [Header("Son")]
+    [Header("Son de creusage")]
     [SerializeField] private AudioSource digSound;
     [SerializeField] private AudioClip digClip;
     [SerializeField, Range(1, 3)] private int playSoundEvery = 1;
+
+    [Header("Son de decouverte")]
+    [Tooltip("Joue uniquement sur le tas qui contient le coquillage.")]
+    [SerializeField] private AudioSource revealSound;
+    [SerializeField] private AudioClip revealClip;
 
     [Header("Digging")]
     [SerializeField, Min(1)] private int clicksToDig = 10;
@@ -48,6 +53,7 @@ public class DigSpot : MonoBehaviour
     private int clicks;
 
     public bool IsDug => dug;
+    public bool HasShell => hasShell;
 
     private void Awake()
     {
@@ -195,7 +201,7 @@ public class DigSpot : MonoBehaviour
         bool playerNear = playerColliders.Count > 0;
 
         // Highlight : allume des que le joueur a la pelle.
-        bool highlightOn = !dug && hasShovel &&
+        bool highlightOn = hasShovel &&
                            (highlightWhenShovelHeld || playerNear);
 
         if (highlightObject != null &&
@@ -205,7 +211,7 @@ public class DigSpot : MonoBehaviour
         }
 
         // Prompt souris : seulement quand le joueur est proche.
-        bool promptOn = !dug && hasShovel && playerNear;
+        bool promptOn = hasShovel && playerNear;
 
         if (promptUI != null && promptUI.activeSelf != promptOn)
             promptUI.SetActive(promptOn);
@@ -221,6 +227,7 @@ public class DigSpot : MonoBehaviour
 
         clicks++;
 
+        // Son de creusage
         if (digSound != null && digClip != null)
         {
             if (playSoundEvery <= 1 || clicks % playSoundEvery == 0)
@@ -269,6 +276,10 @@ public class DigSpot : MonoBehaviour
 
         if (myItem != null)
             myItem.SetActive(true);
+
+        // Son de decouverte : uniquement si c'est le coquillage.
+        if (hasShell && revealSound != null && revealClip != null)
+            revealSound.PlayOneShot(revealClip);
 
         if (hasShell && myItem != null && manager != null)
             manager.CollectShell(transform.position);

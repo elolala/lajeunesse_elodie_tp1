@@ -10,13 +10,14 @@ public class DigManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image progressBar;
 
-    [Header("Objective")]
+    [Header("Objectif")]
     [SerializeField] private int shellsNeeded = 1;
     private int shellsFound;
 
     [Header("Randomisation")]
     [SerializeField] private int shellsToHide = 1;
     [SerializeField] private bool newLayoutOnRestart = true;
+    [SerializeField] private bool logDebug = false;
 
     public event System.Action OnShellFound;
 
@@ -42,8 +43,17 @@ public class DigManager : MonoBehaviour
     private void AssignLoot()
     {
         var spots = FindObjectsByType<DigSpot>(FindObjectsInactive.Exclude);
-        if (spots.Length == 0) return;
 
+        if (logDebug)
+            Debug.Log("=== AssignLoot : " + spots.Length + " tas trouves ===");
+
+        if (spots.Length == 0)
+        {
+            Debug.LogWarning("Aucun tas trouve ! Les DigSpotRoot sont-ils actifs ?");
+            return;
+        }
+
+        // Melange le tableau.
         for (int i = 0; i < spots.Length; i++)
         {
             int r = Random.Range(i, spots.Length);
@@ -53,7 +63,17 @@ public class DigManager : MonoBehaviour
         }
 
         for (int i = 0; i < spots.Length; i++)
-            spots[i].AssignLoot(i < shellsToHide);
+        {
+            bool getsShell = i < shellsToHide;
+            spots[i].AssignLoot(getsShell);
+
+            if (logDebug)
+                Debug.Log("  " + spots[i].name + " -> " +
+                          (getsShell ? "COQUILLAGE" : "junk"));
+        }
+
+        if (logDebug)
+            Debug.Log("=== Fin AssignLoot ===");
     }
 
     public void ShowProgress(float t)
@@ -69,12 +89,14 @@ public class DigManager : MonoBehaviour
         progressBar.transform.parent.gameObject.SetActive(false);
     }
 
-    // Appelé quand le joueur quitte un tas de sable.
     public void ResetProgress()
     {
         HideProgress();
     }
 
+    // Appele quand un tas revele son contenu.
+    // Ne donne PAS de perle : c'est le crabe qui la remet,
+    // une fois le coquillage rapporte.
     public void CollectShell(Vector3 pos)
     {
         shellsFound++;
@@ -82,8 +104,7 @@ public class DigManager : MonoBehaviour
 
         if (shellsFound >= shellsNeeded)
         {
-            Debug.Log("Tous les coquillages trouvés !");
-            // Branche ta cutscene / ton UI de victoire ici
+            Debug.Log("Coquillage trouve ! Va le porter au crabe.");
         }
     }
 }

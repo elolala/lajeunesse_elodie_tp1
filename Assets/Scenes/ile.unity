@@ -191,69 +191,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01 (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1733165673}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
 --- !u!4 &4393595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5527507276599393267, guid: 5dd0a64f6723b7a48b175803bc4877a2, type: 3}
   m_PrefabInstance: {fileID: 486102315}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9822780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-  m_PrefabInstance: {fileID: 1752964052}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9822785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9822780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 1257477960}
-  - {fileID: 346175506}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &9822789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383572284374651009, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
@@ -2098,64 +2046,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01 (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 219615429}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
---- !u!1 &219615428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 219615427}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &219615429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219615428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &219615433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -2673,6 +2569,8 @@ MonoBehaviour:
   digSound: {fileID: 239910100}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -4777,56 +4675,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383122484}
   m_CullTransparentMesh: 1
---- !u!1 &392142737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-  m_PrefabInstance: {fileID: 1528755410}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &392142742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392142737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &392142746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383572284374651009, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
@@ -7848,56 +7696,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &644538562 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-  m_PrefabInstance: {fileID: 734912769}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &644538567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644538562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &644538571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383572284374651009, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
@@ -8425,6 +8223,8 @@ MonoBehaviour:
   digSound: {fileID: 660708993}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -9597,13 +9397,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_02 (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3837016749667912159, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 644538567}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
 --- !u!1001 &743958659
 PrefabInstance:
@@ -10038,6 +9836,8 @@ MonoBehaviour:
   digSound: {fileID: 771653222}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -11159,13 +10959,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1265306236}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
 --- !u!1 &835334062
 GameObject:
@@ -11270,13 +11068,63 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5343617981027312883, guid: 9b088cd19faafeb4cbaf2865af9da452, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836952553}
+    - targetCorrespondingSourceObject: {fileID: 5343617981027312883, guid: 9b088cd19faafeb4cbaf2865af9da452, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 836952554}
   m_SourcePrefab: {fileID: 100100000, guid: 9b088cd19faafeb4cbaf2865af9da452, type: 3}
 --- !u!1 &836952552 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5343617981027312883, guid: 9b088cd19faafeb4cbaf2865af9da452, type: 3}
   m_PrefabInstance: {fileID: 836952551}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &836952553
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836952552}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 8.881784e-16, y: 0.16005972, z: -0.000000014901165}
+--- !u!114 &836952554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836952552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e768b1f79ad2140a21db27fe741454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShellPickup
+  floatAmplitude: 0.15
+  floatSpeed: 2
+  spinSpeed: 60
+  promptUI: {fileID: 0}
+  highlightObject: {fileID: 0}
+  pickupKey: 19
+  pickupClip: {fileID: 8300000, guid: c4b6dd991aca9d5448af7b9cfbcd0e00, type: 3}
+  pickupVolume: 2
+  onCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &837908703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12826,6 +12674,8 @@ MonoBehaviour:
   digSound: {fileID: 940322998}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -14040,6 +13890,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7082758008068234977, guid: 5afc20fb134172446b182a238e83ff00, type: 3}
   m_PrefabInstance: {fileID: 221133342}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1066415567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066415568}
+  - component: {fileID: 1066415569}
+  m_Layer: 0
+  m_Name: RevealAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066415568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066415567}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1272303788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1066415569
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066415567}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1076129896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14470,13 +14449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_02 (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3837016749667912159, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1581703350}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
 --- !u!1 &1112822592
 GameObject:
@@ -15307,6 +15284,8 @@ MonoBehaviour:
   digSound: {fileID: 1160657296}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -17039,56 +17018,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58fca9546f1ba04e954c4619c3f22f0, type: 3}
---- !u!1 &1265306231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 822433968}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1265306236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265306231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1257477960}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1265306240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -17243,6 +17172,7 @@ Transform:
   - {fileID: 414923741}
   - {fileID: 767461598}
   - {fileID: 1108539545}
+  - {fileID: 1066415568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1272303789
@@ -17278,6 +17208,8 @@ MonoBehaviour:
   digSound: {fileID: 1272303790}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 1066415569}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -18570,13 +18502,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01 (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1690796038}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
 --- !u!1001 &1405247492
 PrefabInstance:
@@ -20005,6 +19935,8 @@ MonoBehaviour:
   digSound: {fileID: 1516925844}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -20206,6 +20138,8 @@ MonoBehaviour:
   digSound: {fileID: 1518487565}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -20330,13 +20264,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_02 (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3837016749667912159, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 392142742}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
 --- !u!1 &1530575903
 GameObject:
@@ -20993,56 +20925,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1581703345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-  m_PrefabInstance: {fileID: 1111063583}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1581703350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581703345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 2013476303}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1581703354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383572284374651009, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
@@ -22230,6 +22112,7 @@ MonoBehaviour:
   shellsNeeded: 1
   shellsToHide: 1
   newLayoutOnRestart: 1
+  logDebug: 1
 --- !u!4 &1634206522
 Transform:
   m_ObjectHideFlags: 0
@@ -22450,11 +22333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7893c8e664f07e46a5977ba2d3f1fd8, type: 3}
---- !u!1 &1666799432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 362496489379886822, guid: f7893c8e664f07e46a5977ba2d3f1fd8, type: 3}
-  m_PrefabInstance: {fileID: 1666799431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1676897523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22577,56 +22455,6 @@ Transform:
   - {fileID: 1510477393}
   m_Father: {fileID: 250790903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1690796033 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 1399963491}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1690796038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690796033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1690796042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -23012,56 +22840,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1733165668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 3965518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1733165673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733165668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1733165677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -23578,13 +23356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_02 (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3837016749667912159, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9822785}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
 --- !u!1001 &1762663633
 PrefabInstance:
@@ -24857,56 +24633,6 @@ Transform:
   - {fileID: 1492684075}
   m_Father: {fileID: 835334063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1896377884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-  m_PrefabInstance: {fileID: 2093587076}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1896377889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896377884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1896377893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8383572284374651009, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
@@ -25797,13 +25523,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Pile_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -151018226276820318, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2121644939}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
 --- !u!1 &1965307278
 GameObject:
@@ -26218,6 +25942,8 @@ MonoBehaviour:
   digSound: {fileID: 1989767408}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -26722,11 +26448,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a16ce7302e9664d81551b64b7cfb5b, type: 3}
---- !u!1 &2013476303 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7810861800470178106, guid: 19a16ce7302e9664d81551b64b7cfb5b, type: 3}
-  m_PrefabInstance: {fileID: 2013476302}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2025353530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27763,13 +27484,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3837016749667912159, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9156871647519984187, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1896377889}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6073aabaf853b004ca2756212da5cdf2, type: 3}
 --- !u!1001 &2094381843
 PrefabInstance:
@@ -28150,6 +27869,8 @@ MonoBehaviour:
   digSound: {fileID: 2107781098}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
@@ -28264,56 +27985,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5527507276599393267, guid: 5dd0a64f6723b7a48b175803bc4877a2, type: 3}
   m_PrefabInstance: {fileID: 784554510}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2121644934 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3005644128467938717, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
-  m_PrefabInstance: {fileID: 1964624316}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2121644939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121644934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5e557dd17f7b546842da1fbac63715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DigSpot
-  shellObject: {fileID: 836952552}
-  junkObjects:
-  - {fileID: 346175506}
-  - {fileID: 1666799432}
-  - {fileID: 1620689387}
-  - {fileID: 1596620355}
-  - {fileID: 1060897438}
-  - {fileID: 2126937464}
-  - {fileID: 292637922}
-  - {fileID: 938378355}
-  - {fileID: 853114645}
-  - {fileID: 630683422}
-  - {fileID: 1026553853}
-  revealPoint: {fileID: 0}
-  dugPrefab: {fileID: 0}
-  sandVisual: {fileID: 0}
-  highlightObject: {fileID: 0}
-  promptUI: {fileID: 0}
-  digSound: {fileID: 0}
-  digClip: {fileID: 0}
-  playSoundEvery: 1
-  clicksToDig: 10
-  finalScale: 0.15
-  highlightWhenShovelHeld: 1
-  onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDigComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &2121644943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521419605241607975, guid: 3ac5193848b216c47a5df181f764b9d7, type: 3}
@@ -28664,6 +28335,8 @@ MonoBehaviour:
   digSound: {fileID: 2124547279}
   digClip: {fileID: 8300000, guid: 100d1dc9e6a08ea4791cb82f10dd0307, type: 3}
   playSoundEvery: 1
+  revealSound: {fileID: 0}
+  revealClip: {fileID: 0}
   clicksToDig: 10
   finalScale: 0.15
   highlightWhenShovelHeld: 1
