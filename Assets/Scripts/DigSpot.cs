@@ -28,6 +28,11 @@ public class DigSpot : MonoBehaviour
     [SerializeField, Range(0.05f, 1f)]
     private float finalScale = 0.15f;
 
+    [Header("Highlight")]
+    [Tooltip("Allumer le highlight des que le joueur a la pelle, " +
+             "et non seulement quand il est proche.")]
+    [SerializeField] private bool highlightWhenShovelHeld = true;
+
     [Header("Events")]
     [SerializeField] private UnityEvent onPlayerEnter;
     [SerializeField] private UnityEvent onPlayerExit;
@@ -62,10 +67,13 @@ public class DigSpot : MonoBehaviour
         if (sandVisual != null)
             originalSandScale = sandVisual.localScale;
 
-        SetInteractionVisuals(false);
+        if (promptUI != null)
+            promptUI.SetActive(false);
+
+        if (highlightObject != null)
+            highlightObject.SetActive(false);
 
         // Cache les objets de scène servant de modèles de loot.
-        // Les prefabs du Project window ne sont pas modifiés.
         HideSceneTemplate(shellObject);
 
         if (junkObjects != null)
@@ -120,7 +128,6 @@ public class DigSpot : MonoBehaviour
             destination.rotation
         );
 
-        // Conserve la taille visible d'un modèle de scène.
         if (template.scene.IsValid())
             myItem.transform.localScale = template.transform.lossyScale;
 
@@ -129,7 +136,6 @@ public class DigSpot : MonoBehaviour
 
     private bool IsPlayer(Collider other)
     {
-        // Gère les colliders placés sur les enfants du joueur tagué.
         Transform current = other.transform;
 
         while (current != null)
@@ -162,7 +168,8 @@ public class DigSpot : MonoBehaviour
 
         if (playerColliders.Count == 0)
         {
-            SetInteractionVisuals(false);
+            if (promptUI != null)
+                promptUI.SetActive(false);
 
             if (DigManager.Instance != null)
                 DigManager.Instance.ResetProgress();
@@ -184,13 +191,26 @@ public class DigSpot : MonoBehaviour
 
         DigManager manager = DigManager.Instance;
 
-        bool canDig = playerColliders.Count > 0 &&
-                      manager != null &&
-                      manager.HasShovel;
+        bool hasShovel = manager != null && manager.HasShovel;
+        bool playerNear = playerColliders.Count > 0;
 
-        SetInteractionVisuals(canDig);
+        // Highlight : allume des que le joueur a la pelle.
+        bool highlightOn = !dug && hasShovel &&
+                           (highlightWhenShovelHeld || playerNear);
 
-        if (!canDig)
+        if (highlightObject != null &&
+            highlightObject.activeSelf != highlightOn)
+        {
+            highlightObject.SetActive(highlightOn);
+        }
+
+        // Prompt souris : seulement quand le joueur est proche.
+        bool promptOn = !dug && hasShovel && playerNear;
+
+        if (promptUI != null && promptUI.activeSelf != promptOn)
+            promptUI.SetActive(promptOn);
+
+        if (!promptOn)
             return;
 
         bool clicked = Mouse.current != null &&
@@ -201,7 +221,6 @@ public class DigSpot : MonoBehaviour
 
         clicks++;
 
-        // Son de pelle
         if (digSound != null && digClip != null)
         {
             if (playSoundEvery <= 1 || clicks % playSoundEvery == 0)
@@ -212,8 +231,6 @@ public class DigSpot : MonoBehaviour
             (float)clicks / Mathf.Max(1, clicksToDig)
         );
 
-        // Rétrécit seulement le visuel du sable,
-        // pas le trigger ni l'icône souris.
         if (sandVisual != null)
         {
             float multiplier = Mathf.Lerp(1f, finalScale, progress);
@@ -226,22 +243,15 @@ public class DigSpot : MonoBehaviour
             CompleteDig();
     }
 
-    private void SetInteractionVisuals(bool visible)
-    {
-        if (highlightObject != null &&
-            highlightObject.activeSelf != visible)
-        {
-            highlightObject.SetActive(visible);
-        }
-
-        if (promptUI != null && promptUI.activeSelf != visible)
-            promptUI.SetActive(visible);
-    }
-
     private void CompleteDig()
     {
         dug = true;
-        SetInteractionVisuals(false);
+
+        if (promptUI != null)
+            promptUI.SetActive(false);
+
+        if (highlightObject != null)
+            highlightObject.SetActive(false);
 
         DigManager manager = DigManager.Instance;
 
@@ -270,6 +280,5 @@ public class DigSpot : MonoBehaviour
     private void OnDisable()
     {
         playerColliders.Clear();
-        SetInteractionVisuals(false);
     }
 }
