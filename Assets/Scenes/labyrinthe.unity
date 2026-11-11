@@ -713,10 +713,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 500, y: 100, z: 500}
+  m_Center: {x: 0, y: -50.33, z: 0}
 --- !u!23 &687188726
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ Transform:
   m_GameObject: {fileID: 687188724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.60921, y: -0.87, z: 129.18091}
+  m_LocalPosition: {x: -77.60921, y: 9.9, z: 129.18091}
   m_LocalScale: {x: 71.7, y: 12.926665, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   priority: 0
   blendDistance: 0
   weight: 1
@@ -1152,13 +1152,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157004211}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7002865, z: 0, w: -0.7138619}
-  m_LocalPosition: {x: -92.61, y: 4.33, z: 118.76}
+  m_LocalRotation: {x: -0, y: -0.65342075, z: 0, w: -0.75699496}
+  m_LocalPosition: {x: -92.61, y: 9.43, z: 118.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -271.1, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -278.4, z: 0}
 --- !u!65 &1157004219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1491,14 +1491,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750693531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessVolume
-  sharedProfile: {fileID: 11400000, guid: bd3a18526742fc8468c88335cf458830, type: 2}
-  isGlobal: 0
-  blendDistance: 0.5
-  weight: 1
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
   priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 65a63f1bbadb7aa438a0d38af39b2928, type: 2}
 --- !u!1001 &1998382948
 PrefabInstance:
   m_ObjectHideFlags: 0
