@@ -75,7 +75,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 26e963210c513684da6a7a80353429d3
+    spriteID: 05ba583b8bf1dc9479c3189adfa1c30a
     vertices: []
     indices: 
     edges: []
@@ -88,8 +88,8 @@ TextureImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 177814
-  packageName: Cute Crab
-  packageVersion: 3.1
+  productId: 226721
+  packageName: Pspsps Monkey
+  packageVersion: 3.4
   assetPath: Assets/Suriyun/UI/anim_button1.png
-  uploadId: 835724
+  uploadId: 834512
