@@ -1,16 +1,16 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MonkeyAnimator : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController controller;
     [SerializeField] private float walkThreshold = 0.1f;
-    [SerializeField] private float runThreshold = 5f;
+    [SerializeField] private float runThreshold = 8f;
     [SerializeField] private float smooth = 10f;
 
     private Vector3 lastPos;
     private float speed;
-    private bool wasGrounded = true;
 
     void Start()
     {
@@ -31,14 +31,13 @@ public class MonkeyAnimator : MonoBehaviour
         speed = Mathf.Lerp(speed, raw, Time.deltaTime * smooth);
         animator.SetFloat("Speed", speed);
 
-        if (controller != null)
-        {
-            bool grounded = controller.isGrounded;
+        // Le saut ne part que si le joueur appuie sur Espace
+        bool jumpPressed = Keyboard.current != null &&
+                           Keyboard.current.spaceKey.wasPressedThisFrame;
 
-            if (wasGrounded && !grounded)
-                animator.SetTrigger("Jump");
+        bool grounded = controller == null || controller.isGrounded;
 
-            wasGrounded = grounded;
-        }
+        if (jumpPressed && grounded)
+            animator.SetTrigger("Jump");
     }
 }
