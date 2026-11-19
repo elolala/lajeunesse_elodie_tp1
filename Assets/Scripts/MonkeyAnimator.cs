@@ -1,9 +1,16 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MonkeyAnimator : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+
+    [Tooltip("Force l'etat de nage en permanence (niveau sous-marin).")]
+    [SerializeField] private bool alwaysSwim = true;
+
+    [Tooltip("Nom du parametre bool de nage.")]
+    [SerializeField] private string swimParam = "Swim";
+
+    [Header("Nage mesuree (si Always Swim est decoche)")]
     [SerializeField] private CharacterController controller;
     [SerializeField] private float walkThreshold = 0.1f;
     [SerializeField] private float runThreshold = 8f;
@@ -17,10 +24,16 @@ public class MonkeyAnimator : MonoBehaviour
         if (animator == null) animator = GetComponentInChildren<Animator>();
         if (controller == null) controller = GetComponent<CharacterController>();
         lastPos = transform.position;
+
+        if (animator != null && alwaysSwim && !string.IsNullOrEmpty(swimParam))
+            animator.SetBool(swimParam, true);
     }
 
     void Update()
     {
+        if (alwaysSwim) return;
+        if (animator == null) return;
+
         float raw = Vector3.Distance(
             new Vector3(transform.position.x, 0, transform.position.z),
             new Vector3(lastPos.x, 0, lastPos.z)
@@ -30,14 +43,5 @@ public class MonkeyAnimator : MonoBehaviour
 
         speed = Mathf.Lerp(speed, raw, Time.deltaTime * smooth);
         animator.SetFloat("Speed", speed);
-
-        // Le saut ne part que si le joueur appuie sur Espace
-        bool jumpPressed = Keyboard.current != null &&
-                           Keyboard.current.spaceKey.wasPressedThisFrame;
-
-        bool grounded = controller == null || controller.isGrounded;
-
-        if (jumpPressed && grounded)
-            animator.SetTrigger("Jump");
     }
 }

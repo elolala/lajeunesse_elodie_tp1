@@ -80241,6 +80241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonkeyAnimator
   animator: {fileID: 505420322}
+  alwaysSwim: 1
+  swimParam: Swim
   controller: {fileID: 0}
   walkThreshold: 0.1
   runThreshold: 10
@@ -80455,7 +80457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22d8a9fd538d4e4caa5eb3831234c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwimController
-  swimSpeed: 4
+  swimSpeed: 6
   verticalSpeed: 3
   acceleration: 8
   turnSpeed: 120
