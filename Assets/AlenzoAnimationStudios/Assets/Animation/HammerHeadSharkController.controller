@@ -13,13 +13,13 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
   - m_Name: isMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
   - m_Name: isRolling
     m_Type: 4
@@ -1572,7 +1572,7 @@ AnimatorState:
   m_SpeedParameter: velocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: velocity
 --- !u!1102 &1102413740695278844
 AnimatorState:
   serializedVersion: 6
@@ -1871,7 +1871,7 @@ AnimatorStateMachine:
     m_Position: {x: 312, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102411540662936962}
-    m_Position: {x: 624, y: 120, z: 0}
+    m_Position: {x: 630, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102389753652822810}
     m_Position: {x: 624, y: 216, z: 0}
@@ -1935,7 +1935,7 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102413740695278844}
-    m_Position: {x: 300, y: 168, z: 0}
+    m_Position: {x: 300, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102548922065029912}
     m_Position: {x: 300, y: 252, z: 0}

@@ -107982,6 +107982,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 948053442}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &948798310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948798311}
+  m_Layer: 0
+  m_Name: RequinPointB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &948798311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948798310}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.57219, y: -6.53, z: -35.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949692055
 GameObject:
   m_ObjectHideFlags: 0
@@ -206875,6 +206906,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1799239310}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1799765519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799765520}
+  m_Layer: 0
+  m_Name: RequinPointA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1799765520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799765519}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.57219, y: -6.53, z: -101.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1799899662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237649,7 +237711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.014
+      value: -8.64
       objectReference: {fileID: 0}
     - target: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
       propertyPath: m_LocalPosition.z
@@ -237683,11 +237745,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      propertyPath: isWhaleShark
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      propertyPath: swimmingSpeedMult
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1357017521378560, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2062587598}
   m_SourcePrefab: {fileID: 100100000, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+--- !u!1 &2062587590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1357017521378560, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+  m_PrefabInstance: {fileID: 2062587589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2062587596 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95138940917429304, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+  m_PrefabInstance: {fileID: 2062587589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062587598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062587590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7728c0065605134a9569945f12050d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolLoop
+  pointA: {fileID: 1799765520}
+  pointB: {fileID: 948798311}
+  speed: 3
+  pauseAtEnds: 0.5
+  rotateTowardsMovement: 1
+  turnSmoothness: 3
+  animator: {fileID: 2062587596}
+  moveParam: isMoving
+  velocityParam: velocity
+  animVelocity: 0.5
 --- !u!1001 &2062953616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247852,3 +247961,5 @@ SceneRoots:
   - {fileID: 1167973547}
   - {fileID: 894398462}
   - {fileID: 2062587589}
+  - {fileID: 1799765520}
+  - {fileID: 948798311}
