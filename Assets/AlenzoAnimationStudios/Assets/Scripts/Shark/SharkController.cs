@@ -106,8 +106,8 @@ public class SharkController : MonoBehaviour
 
         // Setting rigidbody
         sharkRb.useGravity = false;
-        sharkRb.drag = 1f;
-        sharkRb.angularDrag = 1f;
+        sharkRb.linearDamping = 1f;
+        sharkRb.angularDamping = 1f;
         sharkRb.constraints = RigidbodyConstraints.FreezeRotationZ;
 }
 	
@@ -291,7 +291,7 @@ public class SharkController : MonoBehaviour
             }
         }
         else
-            sharkRb.velocity = Vector3.Lerp(sharkRb.velocity, Vector3.zero, Time.deltaTime * 1f);
+            sharkRb.linearVelocity = Vector3.Lerp(sharkRb.linearVelocity, Vector3.zero, Time.deltaTime * 1f);
     }
 
     #region Be_Bitten

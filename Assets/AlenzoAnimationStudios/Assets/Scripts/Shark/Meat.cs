@@ -20,8 +20,8 @@ public class Meat : MonoBehaviour
     {
         meatRb = GetComponent<Rigidbody>();
         meatRb.mass = 1;
-        meatRb.drag = 1;
-        meatRb.angularDrag = 1;
+        meatRb.linearDamping = 1;
+        meatRb.angularDamping = 1;
         meatRb.useGravity = false;
         meatRb.isKinematic = false;
     }
