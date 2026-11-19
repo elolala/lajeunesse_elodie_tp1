@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5e620384d4b33e74da18a4760cdccc90
+timeCreated: 1518996682
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Animation/SandSharkController.controller
+  uploadId: 250562

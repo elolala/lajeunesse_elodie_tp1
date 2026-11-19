@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 66ecec68d50e1e047bf8b75d052b2410
+timeCreated: 1520213599
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 31900000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Animation/SandSharkAttackMask.mask
+  uploadId: 250562

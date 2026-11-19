@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1b58e38f1806a034fac8702a8344a144
+timeCreated: 1523939818
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 50
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Scripts/SimpleCamera/SimpleFreeCamera.cs
+  uploadId: 250562

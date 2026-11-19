@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 60fc77473aa9d194c967de29e34b314d
+timeCreated: 1523151723
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/FBX/WhaleShark/Materials/WhaleShark.mat
+  uploadId: 250562

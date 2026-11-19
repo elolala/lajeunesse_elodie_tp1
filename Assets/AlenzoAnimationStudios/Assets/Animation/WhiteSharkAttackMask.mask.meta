@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8e10b15bf9586f0418107b20ae9268c2
+timeCreated: 1520213599
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 31900000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Animation/WhiteSharkAttackMask.mask
+  uploadId: 250562

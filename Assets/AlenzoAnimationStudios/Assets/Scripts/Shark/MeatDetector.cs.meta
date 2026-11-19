@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: e274a106f32fab6409dfc302e6ccc048
+timeCreated: 1519798366
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Scripts/Shark/MeatDetector.cs
+  uploadId: 250562

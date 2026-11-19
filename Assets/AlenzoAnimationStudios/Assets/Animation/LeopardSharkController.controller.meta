@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7f257c5c35eab394eb7ebeb8db7a3a03
+timeCreated: 1518996682
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Animation/LeopardSharkController.controller
+  uploadId: 250562

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0a57fbb4889a2794b8caa1af29707791
+timeCreated: 1520213599
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 31900000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120563
+  packageName: Sharks LowPoly
+  packageVersion: 1.0
+  assetPath: Assets/AlenzoAnimationStudios/Assets/Animation/LemonSharkAttackMask.mask
+  uploadId: 250562
