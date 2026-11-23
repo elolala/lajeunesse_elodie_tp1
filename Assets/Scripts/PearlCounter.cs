@@ -8,6 +8,9 @@ public class PearlCounter : MonoBehaviour
     [SerializeField] private TMP_Text counterText;
     [SerializeField] private int totalPearls = 3;
 
+    [Tooltip("Perles deja gagnees au demarrage de la scene.")]
+    [SerializeField] private int startingPearls = 0;
+
     private int collected;
 
     void Awake()
@@ -18,6 +21,7 @@ public class PearlCounter : MonoBehaviour
 
     void Start()
     {
+        collected = Mathf.Clamp(startingPearls, 0, totalPearls);
         UpdateText();
     }
 

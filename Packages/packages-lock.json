@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.budorf.underwater-swim": {
+      "version": "https://github.com/mdj128/yt-underwater-scene.git?path=UnderwaterSwimController",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.inputsystem": "1.6.3"
+      },
+      "hash": "7e330ca62cebbb691b74f14b9abc0179f7745bd7"
+    },
     "com.jfcartier.collider-event-system": {
       "version": "https://github.com/jfcmontmorency/collider-event-system.git",
       "depth": 0,
