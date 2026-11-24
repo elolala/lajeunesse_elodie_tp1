@@ -12,15 +12,17 @@ public class ThirdPersonCameraController : MonoBehaviour
     [SerializeField] private float followSmoothTime = 0f;
     [SerializeField] private float orbitSensitivity = 90f;
     [SerializeField] private float minPitch = -60f;
-    [SerializeField] private float maxPitch = 75f;
+    [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float alignToTargetSharpness = 8f;
     [SerializeField] private float alignVelocityThreshold = 0.2f;
     [SerializeField] private float alignDelay = 0.25f;
     [SerializeField] private bool autoAlignWhenIdle = false;
     [SerializeField] private InputActionReference lookAction;
-    [SerializeField] private bool requireHoldForOrbit = true;
+    [SerializeField] private bool requireHoldForOrbit = false;
     [SerializeField] private InputActionReference orbitHoldAction;
     [SerializeField] private UnderwaterSwimController movementController;
+    [SerializeField] private bool logLookInput = false;
+
     [Header("Terrain Limits")]
     [SerializeField] private Terrain terrainLimit;
     [SerializeField] private float terrainClearance = 0.1f;
@@ -34,7 +36,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     {
         if (target == null)
         {
-            Debug.LogWarning($"{nameof(ThirdPersonCameraController)} has no target assigned. The camera will not track anything until a target is set.");
+            Debug.LogWarning($"{nameof(ThirdPersonCameraController)} has no target assigned.");
         }
         else if (movementController == null)
         {
@@ -53,14 +55,11 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        EnableAction(lookAction, $"{nameof(ThirdPersonCameraController)} has no look action assigned. Mouse/gamepad orbit will be disabled.");
+        EnableAction(lookAction, $"{nameof(ThirdPersonCameraController)} has no look action assigned.");
+
         if (requireHoldForOrbit && orbitHoldAction != null)
         {
             EnableAction(orbitHoldAction, string.Empty);
-        }
-        else if (requireHoldForOrbit && orbitHoldAction == null)
-        {
-            Debug.Log($"[{nameof(ThirdPersonCameraController)}] No hold action assigned. Defaulting to Mouse right button.");
         }
 
         InitializeAngles();
@@ -103,16 +102,38 @@ public class ThirdPersonCameraController : MonoBehaviour
     private void UpdateOrbit()
     {
         bool allowOrbit = !requireHoldForOrbit;
-        if (requireHoldForOrbit && orbitHoldAction != null)
+
+        if (requireHoldForOrbit)
         {
-            allowOrbit = orbitHoldAction.action.IsPressed();
-        }
-        else if (requireHoldForOrbit && orbitHoldAction == null && Mouse.current != null)
-        {
-            allowOrbit = Mouse.current.rightButton.isPressed;
+            if (orbitHoldAction != null)
+            {
+                allowOrbit = orbitHoldAction.action.IsPressed();
+            }
+            else if (Mouse.current != null)
+            {
+                allowOrbit = Mouse.current.rightButton.isPressed;
+            }
         }
 
-        Vector2 lookInput = allowOrbit && lookAction != null ? lookAction.action.ReadValue<Vector2>() : Vector2.zero;
+        // Important : on lit l'action meme si allowOrbit est faux,
+        // pour que le log reste lisible pendant le diagnostic.
+        Vector2 rawLook = Vector2.zero;
+        bool actionReady = lookAction != null && lookAction.action.enabled;
+
+        if (actionReady)
+        {
+            rawLook = lookAction.action.ReadValue<Vector2>();
+        }
+
+        Vector2 lookInput = allowOrbit ? rawLook : Vector2.zero;
+
+        if (logLookInput)
+        {
+            Debug.Log("Look=" + rawLook + " | allow=" + allowOrbit +
+                      " | enabled=" + actionReady +
+                      " | cursor=" + Cursor.lockState);
+        }
+
         yaw += lookInput.x * orbitSensitivity * Time.deltaTime;
         pitch -= lookInput.y * orbitSensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
@@ -135,7 +156,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         if (shouldAlignToTarget && movementController != null)
         {
-            shouldAlignToTarget = movementController.CurrentVelocity.sqrMagnitude > alignVelocityThreshold * alignVelocityThreshold;
+            shouldAlignToTarget = movementController.CurrentVelocity.sqrMagnitude >
+                                  alignVelocityThreshold * alignVelocityThreshold;
         }
 
         if (shouldAlignToTarget)
