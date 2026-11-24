@@ -8601,7 +8601,7 @@ Transform:
   m_GameObject: {fileID: 70911628}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13600074, y: 0.901, z: 0}
+  m_LocalPosition: {x: -0.13600074, y: 0.716, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50727,8 +50727,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441713910}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026167981, y: 0.02616797, z: -0.0006852317, w: 0.9993148}
-  m_LocalPosition: {x: -0.06008448, y: 0.901, z: -3.0841012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06008448, y: 0.71599996, z: -3.0841012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50880,22 +50880,22 @@ MonoBehaviour:
   ReferenceFrame: 2
   RecenterTarget: 0
   PanAxis:
-    Value: 3
+    Value: 0
     Center: 0
-    Range: {x: -90, y: 90}
-    Wrap: 1
+    Range: {x: -60, y: 60}
+    Wrap: 0
     Recentering:
-      Enabled: 0
+      Enabled: 1
       Wait: 1
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 3
+    Value: 0
     Center: 0
-    Range: {x: -85, y: 85}
+    Range: {x: -50, y: 50}
     Wrap: 0
     Recentering:
-      Enabled: 0
+      Enabled: 1
       Wait: 1
       Time: 2
     Restrictions: 0
@@ -139289,6 +139289,7 @@ GameObject:
   - component: {fileID: 1157004219}
   - component: {fileID: 1157004220}
   - component: {fileID: 1157004221}
+  - component: {fileID: 1157004222}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -139439,8 +139440,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157004211}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.01657998, y: -0.773575, z: 0.020256776, w: 0.63316387}
-  m_LocalPosition: {x: 33.70474, y: -7.4299436, z: -64.85741}
+  m_LocalRotation: {x: 0, y: -0.790155, z: 0, w: 0.6129071}
+  m_LocalPosition: {x: 33.70474, y: -7.897827, z: -64.85741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -139542,6 +139543,22 @@ MonoBehaviour:
   logLookInput: 0
   terrainLimit: {fileID: 0}
   terrainClearance: 0.1
+--- !u!114 &1157004222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157004211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ebdb882e4c7cd4fa09e07ebaa46963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CamLookGate
+  inputAxisController: {fileID: 441713914}
+  playerInput: {fileID: 684748415}
+  releaseDelay: 0.15
+  includeTurning: 1
 --- !u!1001 &1158264994
 PrefabInstance:
   m_ObjectHideFlags: 0
