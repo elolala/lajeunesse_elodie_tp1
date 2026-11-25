@@ -80469,6 +80469,7 @@ GameObject:
   - component: {fileID: 684748415}
   - component: {fileID: 684748413}
   - component: {fileID: 684748420}
+  - component: {fileID: 684748421}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -80519,7 +80520,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
@@ -80685,6 +80686,29 @@ MonoBehaviour:
   swimmingBoolParameter: IsSwimming
   requireWaterVolume: 0
   volumeCheckRadius: 0.1
+--- !u!136 &684748421
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684748410}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.87
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &684862182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162500,6 +162524,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1329766888}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1329834894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1329834896}
+  - component: {fileID: 1329834895}
+  m_Layer: 0
+  m_Name: PlayerLives
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1329834895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329834894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05e9d75cb1b8ac4c97f413ae98ec278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLives
+  maxLives: 3
+  deathScene: Echec
+--- !u!4 &1329834896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329834894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.2394, y: -8.26347, z: -67.76166}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1331854781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231456,6 +231526,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1909584489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1909769676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1909769677}
+  - component: {fileID: 1909769678}
+  - component: {fileID: 1909769679}
+  m_Layer: 0
+  m_Name: SharkDamageZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1909769677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909769676}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2062587603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1909769678
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909769676}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.4
+  m_Center: {x: 0, y: 0, z: 0.28}
+--- !u!114 &1909769679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909769676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92517ee2a44bb064d940e498f73dda0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharkHit
+  damage: 1
+  hitCooldown: 2
+  animator: {fileID: 2062587596}
+  attackTrigger: isAttacking
+  attackIndexParam: attackIndex
+  attackIndex: 0
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  hitSound: {fileID: 0}
+  logHits: 1
 --- !u!1001 &1910389603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249750,7 +249897,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1909769677}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1357017521378560, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
       insertIndex: -1
@@ -249788,6 +249938,11 @@ MonoBehaviour:
   moveParam: isMoving
   velocityParam: velocity
   animVelocity: 0.5
+--- !u!4 &2062587603 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+  m_PrefabInstance: {fileID: 2062587589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2062953616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260177,3 +260332,4 @@ SceneRoots:
   - {fileID: 1303013376}
   - {fileID: 1589242790}
   - {fileID: 422656145}
+  - {fileID: 1329834896}
