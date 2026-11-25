@@ -162554,7 +162554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLives
   maxLives: 3
-  deathScene: Echec
+  deathScene: Echec2
 --- !u!4 &1329834896
 Transform:
   m_ObjectHideFlags: 0
@@ -231594,10 +231594,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SharkHit
   damage: 1
   hitCooldown: 2
+  lungeDistance: 2
+  keepHeight: 1
   animator: {fileID: 2062587596}
   attackTrigger: isAttacking
   attackIndexParam: attackIndex
   attackIndex: 0
+  attackLayerName: Attack
+  attackLayerWeight: 1
+  attackDuration: 2.5
   onHit:
     m_PersistentCalls:
       m_Calls: []

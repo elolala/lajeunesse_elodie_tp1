@@ -10,6 +10,13 @@ public class SharkHit : MonoBehaviour
     [Tooltip("Temps minimal entre deux impacts.")]
     [SerializeField] private float hitCooldown = 2f;
 
+    [Header("Recul")]
+    [Tooltip("Distance de la charge vers le joueur au moment de l'impact.")]
+    [SerializeField] private float lungeDistance = 2f;
+
+    [Tooltip("Hauteur conservee pendant la charge (pour ne pas plonger).")]
+    [SerializeField] private bool keepHeight = true;
+
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
@@ -23,7 +30,7 @@ public class SharkHit : MonoBehaviour
     [Tooltip("Layer de l'attaque dans le controller du requin.")]
     [SerializeField] private string attackLayerName = "Attack";
 
-    [Tooltip("Poids du layer d'attaque pendant l'animation.")]
+    [Tooltip("Poids du layer pendant l'animation.")]
     [SerializeField, Range(0f, 1f)] private float attackLayerWeight = 1f;
 
     [Tooltip("Duree de l'animation d'attaque, en secondes.")]
@@ -77,9 +84,10 @@ public class SharkHit : MonoBehaviour
 
         lastHitTime = Time.time;
 
-        if (logHits) Debug.Log("REQUIN: JOUEUR TOUCHE ! -1 vie");
+        if (logHits) Debug.Log("REQUIN: JOUEUR TOUCHE ! -" + damage + " vie");
 
-        PlayAttack();
+        PlayAttack(other.transform.position);
+        LungeTowards(other.transform.position);
 
         if (hitSound != null)
             AudioSource.PlayClipAtPoint(hitSound, transform.position);
@@ -92,7 +100,7 @@ public class SharkHit : MonoBehaviour
         onHit.Invoke();
     }
 
-    private void PlayAttack()
+    private void PlayAttack(Vector3 playerPos)
     {
         if (animator == null)
         {
@@ -100,7 +108,6 @@ public class SharkHit : MonoBehaviour
             return;
         }
 
-        // Le layer doit avoir un poids > 0, sinon l'animation est invisible
         if (attackLayerIndex >= 0)
         {
             animator.SetLayerWeight(attackLayerIndex, attackLayerWeight);
@@ -114,7 +121,6 @@ public class SharkHit : MonoBehaviour
             Debug.LogWarning("REQUIN: layer '" + attackLayerName + "' introuvable.");
         }
 
-        // Les deux parametres sont necessaires dans ta transition
         if (!string.IsNullOrEmpty(attackIndexParam))
             animator.SetInteger(attackIndexParam, attackIndex);
 
@@ -127,6 +133,25 @@ public class SharkHit : MonoBehaviour
 
         CancelInvoke(nameof(ResetAttackLayer));
         Invoke(nameof(ResetAttackLayer), attackDuration);
+    }
+
+    // A-coup visible vers le joueur : rend l'attaque lisible meme si
+    // le clip ne bouge que la tete.
+    private void LungeTowards(Vector3 playerPos)
+    {
+        if (lungeDistance <= 0f) return;
+
+        Vector3 dir = playerPos - transform.position;
+
+        if (keepHeight)
+            dir.y = 0f;
+
+        if (dir.sqrMagnitude < 0.001f) return;
+
+        transform.position += dir.normalized * lungeDistance;
+
+        if (logHits)
+            Debug.Log("REQUIN: charge de " + lungeDistance + " unites vers le joueur.");
     }
 
     private void ResetAttackLayer()
