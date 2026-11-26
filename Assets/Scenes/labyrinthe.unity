@@ -795,9 +795,13 @@ PrefabInstance:
       propertyPath: forwardShiftMaxSpeed
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144716575}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1357017521378560, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
       insertIndex: -1
@@ -835,6 +839,11 @@ MonoBehaviour:
   moveParam: isMoving
   velocityParam: velocity
   animVelocity: 0.5
+--- !u!4 &2981925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+  m_PrefabInstance: {fileID: 2981917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3274866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80673,11 +80682,8 @@ MonoBehaviour:
   swimSpeed: 10
   sprintMultiplier: 2
   acceleration: 15
-  rotationDamping: 10
-  turnAlignmentThreshold: 0.25
+  turnSpeed: 100
   verticalSwimSpeed: 7
-  rotationPivotOffset: {x: 0, y: 1, z: 0}
-  cameraPitchVerticalInfluence: 0.75
   terrainLimit: {fileID: 0}
   terrainClearance: 0.1
   clampToWorldHeight: 0
@@ -137277,6 +137283,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1144028396}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1144716574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144716575}
+  - component: {fileID: 1144716577}
+  - component: {fileID: 1144716576}
+  m_Layer: 0
+  m_Name: SharkDamageZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1144716575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144716574}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99990255, z: -0, w: 0.013962291}
+  m_LocalPosition: {x: 0.024, y: 0.272, z: 2.725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2981925}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144716576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144716574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92517ee2a44bb064d940e498f73dda0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharkHit
+  damage: 1
+  hitCooldown: 2
+  lungeDistance: 2
+  keepHeight: 1
+  animator: {fileID: 2062587596}
+  attackTrigger: isAttackingTrigger
+  attackIndexParam: attackIndex
+  attackIndex: 0
+  attackLayerName: Attack
+  attackLayerWeight: 1
+  attackDuration: 2.5
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  hitSound: {fileID: 0}
+  logHits: 1
+--- !u!135 &1144716577
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144716574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.58
+  m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!1001 &1146633898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146642,6 +146730,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1177408948}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1178509758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178509759}
+  - component: {fileID: 1178509761}
+  - component: {fileID: 1178509760}
+  m_Layer: 0
+  m_Name: SharkDamageZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1178509759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178509758}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7015314, z: -0, w: 0.7126386}
+  m_LocalPosition: {x: -0.201, y: 0.054, z: 2.357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1753294558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178509760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178509758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92517ee2a44bb064d940e498f73dda0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharkHit
+  damage: 1
+  hitCooldown: 2
+  lungeDistance: 2
+  keepHeight: 1
+  animator: {fileID: 1753294552}
+  attackTrigger: isAttackingTrigger
+  attackIndexParam: attackIndex
+  attackIndex: 0
+  attackLayerName: Attack
+  attackLayerWeight: 1
+  attackDuration: 2.5
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  hitSound: {fileID: 0}
+  logHits: 1
+--- !u!135 &1178509761
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178509758}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.58
+  m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!1001 &1178535546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212878,9 +213048,13 @@ PrefabInstance:
       propertyPath: swimmingSpeedMult
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1178509759}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1357017521378560, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
       insertIndex: -1
@@ -212918,6 +213092,11 @@ MonoBehaviour:
   moveParam: isMoving
   velocityParam: velocity
   animVelocity: 0.5
+--- !u!4 &1753294558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
+  m_PrefabInstance: {fileID: 1753294550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1753421248
 PrefabInstance:
   m_ObjectHideFlags: 0
