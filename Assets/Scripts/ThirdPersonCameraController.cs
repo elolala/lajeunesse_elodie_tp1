@@ -1,68 +1,56 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Simple third-person orbit camera that follows a target while reading the Input System "Look" action.
-/// Attach to the active camera in the scene.
-/// </summary>
 public class ThirdPersonCameraController : MonoBehaviour
 {
+    [Header("Cible")]
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset = new Vector3(0f, 1.5f, -4f);
     [SerializeField] private float followSmoothTime = 0f;
+
+    [Header("Orbite souris")]
+    [SerializeField] private InputActionReference lookAction;
     [SerializeField] private float orbitSensitivity = 90f;
     [SerializeField] private float minPitch = -60f;
     [SerializeField] private float maxPitch = 85f;
-    [SerializeField] private float alignToTargetSharpness = 8f;
-    [SerializeField] private float alignVelocityThreshold = 0.2f;
-    [SerializeField] private float alignDelay = 0.25f;
-    [SerializeField] private bool autoAlignWhenIdle = false;
-    [SerializeField] private InputActionReference lookAction;
+
+    [Tooltip("Demander de maintenir un bouton pour tourner la camera.")]
     [SerializeField] private bool requireHoldForOrbit = false;
     [SerializeField] private InputActionReference orbitHoldAction;
-    [SerializeField] private UnderwaterSwimController movementController;
+
+    [Header("Debug")]
     [SerializeField] private bool logLookInput = false;
 
-    [Header("Terrain Limits")]
+    [Header("Limites de terrain")]
     [SerializeField] private Terrain terrainLimit;
     [SerializeField] private float terrainClearance = 0.1f;
 
     private Vector3 followVelocity;
     private float yaw;
     private float pitch;
-    private float alignCooldown;
 
     private void Awake()
     {
         if (target == null)
-        {
-            Debug.LogWarning($"{nameof(ThirdPersonCameraController)} has no target assigned.");
-        }
-        else if (movementController == null)
-        {
-            movementController = target.GetComponent<UnderwaterSwimController>();
-        }
+            Debug.LogWarning("ThirdPersonCameraController : aucune cible assignee.");
 
-        if (terrainLimit == null && movementController != null)
-        {
-            terrainLimit = movementController.TerrainLimit;
-            if (Mathf.Approximately(terrainClearance, 0f))
-            {
-                terrainClearance = movementController.TerrainClearance;
-            }
-        }
+        if (terrainLimit == null)
+            terrainLimit = FindFirstObjectByType<Terrain>();
     }
 
     private void OnEnable()
     {
-        EnableAction(lookAction, $"{nameof(ThirdPersonCameraController)} has no look action assigned.");
+        if (lookAction != null)
+            lookAction.action.Enable();
+        else
+            Debug.LogWarning("ThirdPersonCameraController : Look Action est vide !");
 
-        if (requireHoldForOrbit && orbitHoldAction != null)
-        {
-            EnableAction(orbitHoldAction, string.Empty);
-        }
+        if (orbitHoldAction != null)
+            orbitHoldAction.action.Enable();
 
-        InitializeAngles();
+        Vector3 euler = transform.eulerAngles;
+        yaw = euler.y;
+        pitch = euler.x;
     }
 
     private void OnDisable()
@@ -73,30 +61,10 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (target == null)
-        {
-            return;
-        }
+        if (target == null) return;
 
         UpdateOrbit();
         UpdatePosition();
-    }
-
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
-        if (target != null && movementController == null)
-        {
-            movementController = target.GetComponent<UnderwaterSwimController>();
-        }
-        InitializeAngles();
-    }
-
-    private void InitializeAngles()
-    {
-        Vector3 euler = transform.eulerAngles;
-        yaw = euler.y;
-        pitch = euler.x;
     }
 
     private void UpdateOrbit()
@@ -106,24 +74,16 @@ public class ThirdPersonCameraController : MonoBehaviour
         if (requireHoldForOrbit)
         {
             if (orbitHoldAction != null)
-            {
                 allowOrbit = orbitHoldAction.action.IsPressed();
-            }
             else if (Mouse.current != null)
-            {
                 allowOrbit = Mouse.current.rightButton.isPressed;
-            }
         }
 
-        // Important : on lit l'action meme si allowOrbit est faux,
-        // pour que le log reste lisible pendant le diagnostic.
         Vector2 rawLook = Vector2.zero;
         bool actionReady = lookAction != null && lookAction.action.enabled;
 
         if (actionReady)
-        {
             rawLook = lookAction.action.ReadValue<Vector2>();
-        }
 
         Vector2 lookInput = allowOrbit ? rawLook : Vector2.zero;
 
@@ -138,42 +98,13 @@ public class ThirdPersonCameraController : MonoBehaviour
         pitch -= lookInput.y * orbitSensitivity * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        bool hasOrbitInput = allowOrbit && lookInput.sqrMagnitude > 0.0001f;
-        if (hasOrbitInput)
-        {
-            alignCooldown = alignDelay;
-        }
-        else
-        {
-            alignCooldown = Mathf.Max(alignCooldown - Time.deltaTime, 0f);
-        }
-
-        bool shouldAlignToTarget = autoAlignWhenIdle &&
-                                   alignCooldown <= 0f &&
-                                   !hasOrbitInput &&
-                                   target != null &&
-                                   alignToTargetSharpness > 0f;
-
-        if (shouldAlignToTarget && movementController != null)
-        {
-            shouldAlignToTarget = movementController.CurrentVelocity.sqrMagnitude >
-                                  alignVelocityThreshold * alignVelocityThreshold;
-        }
-
-        if (shouldAlignToTarget)
-        {
-            float targetYaw = target.eulerAngles.y;
-            float lerpFactor = 1f - Mathf.Exp(-alignToTargetSharpness * Time.deltaTime);
-            yaw = Mathf.LerpAngle(yaw, targetYaw, lerpFactor);
-        }
-
         transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
     }
 
     private void UpdatePosition()
     {
         Vector3 desiredPosition = target.position + transform.rotation * offset;
-        ApplyTerrainClamp(ref desiredPosition, adjustVelocity: false);
+        ApplyTerrainClamp(ref desiredPosition);
 
         if (followSmoothTime < 0.001f)
         {
@@ -183,40 +114,20 @@ public class ThirdPersonCameraController : MonoBehaviour
         else
         {
             float smoothTime = Mathf.Max(0.0001f, followSmoothTime);
-            Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref followVelocity, smoothTime);
-            ApplyTerrainClamp(ref smoothedPosition, adjustVelocity: true);
-            transform.position = smoothedPosition;
+            transform.position = Vector3.SmoothDamp(
+                transform.position, desiredPosition, ref followVelocity, smoothTime
+            );
         }
     }
 
-    private void EnableAction(InputActionReference actionReference, string warningMessage)
+    private void ApplyTerrainClamp(ref Vector3 position)
     {
-        if (actionReference != null)
-        {
-            actionReference.action.Enable();
-        }
-        else if (!string.IsNullOrEmpty(warningMessage))
-        {
-            Debug.LogWarning(warningMessage);
-        }
-    }
-
-    private void ApplyTerrainClamp(ref Vector3 position, bool adjustVelocity)
-    {
-        if (terrainLimit == null)
-        {
-            return;
-        }
+        if (terrainLimit == null) return;
 
         Vector3 terrainOrigin = terrainLimit.transform.position;
         float terrainHeight = terrainLimit.SampleHeight(position) + terrainOrigin.y + terrainClearance;
+
         if (position.y < terrainHeight)
-        {
             position.y = terrainHeight;
-            if (adjustVelocity && followVelocity.y < 0f)
-            {
-                followVelocity.y = 0f;
-            }
-        }
     }
 }

@@ -50874,7 +50874,7 @@ MonoBehaviour:
   PanAxis:
     Value: 0
     Center: 0
-    Range: {x: -60, y: 60}
+    Range: {x: -80, y: 80}
     Wrap: 0
     Recentering:
       Enabled: 1
@@ -50884,7 +50884,7 @@ MonoBehaviour:
   TiltAxis:
     Value: 0
     Center: 0
-    Range: {x: -50, y: 50}
+    Range: {x: -70, y: 70}
     Wrap: 0
     Recentering:
       Enabled: 1
@@ -139356,18 +139356,13 @@ MonoBehaviour:
   target: {fileID: 684748411}
   offset: {x: 0, y: 1.5, z: -4}
   followSmoothTime: 0
+  lookAction: {fileID: -3787169064211337688, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   orbitSensitivity: 90
   minPitch: -60
   maxPitch: 85
-  alignToTargetSharpness: 8
-  alignVelocityThreshold: 0.2
-  alignDelay: 0.25
-  autoAlignWhenIdle: 0
-  lookAction: {fileID: -3787169064211337688, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
   requireHoldForOrbit: 0
   orbitHoldAction: {fileID: 0}
-  movementController: {fileID: 684748420}
-  logLookInput: 0
+  logLookInput: 1
   terrainLimit: {fileID: 0}
   terrainClearance: 0.1
 --- !u!114 &1157004222
@@ -231555,7 +231550,7 @@ Transform:
   m_GameObject: {fileID: 1909769676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.282, z: 2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -231580,7 +231575,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.4
+  m_Radius: 0.58
   m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!114 &1909769679
 MonoBehaviour:
