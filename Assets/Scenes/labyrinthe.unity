@@ -48947,7 +48947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b277baf49a5a07446bd3b3ac91ba4b42, type: 3}
       propertyPath: m_Name
-      value: "tr\xE9sor"
+      value: tresor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80670,12 +80670,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd997346ebaa3e4b8ce1d25b9b3586e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnderwaterSwimController.Runtime::UnderwaterSwimController
-  swimSpeed: 4
-  sprintMultiplier: 3
-  acceleration: 10
-  turnSpeed: 100
+  swimSpeed: 10
+  sprintMultiplier: 2
+  acceleration: 15
+  rotationDamping: 10
+  turnAlignmentThreshold: 0.25
   verticalSwimSpeed: 7
   rotationPivotOffset: {x: 0, y: 1, z: 0}
+  cameraPitchVerticalInfluence: 0.75
   terrainLimit: {fileID: 0}
   terrainClearance: 0.1
   clampToWorldHeight: 0
@@ -148458,11 +148460,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1633151727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 508, y: -63}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -60, y: -28}
   m_SizeDelta: {x: 70, y: 70}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1196195226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231597,7 +231599,7 @@ MonoBehaviour:
   lungeDistance: 2
   keepHeight: 1
   animator: {fileID: 2062587596}
-  attackTrigger: isAttacking
+  attackTrigger: isAttackingTrigger
   attackIndexParam: attackIndex
   attackIndex: 0
   attackLayerName: Attack
@@ -240363,11 +240365,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1633151727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 647.7, y: -63}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 79.70001, y: -28}
   m_SizeDelta: {x: 70, y: 70}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1979489118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243042,11 +243044,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1633151727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 578.1, y: -63}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 10.099976, y: -28}
   m_SizeDelta: {x: 70, y: 70}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2002297410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249900,7 +249902,8 @@ PrefabInstance:
       propertyPath: swimmingSpeedMult
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114149114232275968, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4978873436729206, guid: e7ae7d77a7f520943a779e24194ed016, type: 3}
