@@ -137332,7 +137332,7 @@ MonoBehaviour:
   hitCooldown: 2
   lungeDistance: 2
   keepHeight: 1
-  animator: {fileID: 2062587596}
+  animator: {fileID: 2981919}
   attackTrigger: isAttackingTrigger
   attackIndexParam: attackIndex
   attackIndex: 0
