@@ -80684,6 +80684,7 @@ MonoBehaviour:
   acceleration: 15
   turnSpeed: 100
   verticalSwimSpeed: 7
+  rotationPivotOffset: {x: 0, y: 1, z: 0}
   terrainLimit: {fileID: 0}
   terrainClearance: 0.1
   clampToWorldHeight: 0
@@ -164854,6 +164855,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2724300453241374572, guid: ac0400fbb3461084b8a772038833d549, type: 3}
   m_PrefabInstance: {fileID: 1345931780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1346732662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346732664}
+  - component: {fileID: 1346732663}
+  m_Layer: 0
+  m_Name: CutsceneSkipper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1346732663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346732662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3076cbbfbeaed048b82ef8e6c1bf4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneSkipper
+  director: {fileID: 969742910}
+  skipKey: 2
+  startDelay: 0.5
+  skipUntilTime: -1
+  fadeOverlay: {fileID: 0}
+  fadeOutDuration: 0.5
+  logSkip: 1
+--- !u!4 &1346732664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346732662}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 59.39515, y: -30.9902, z: -10.49667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1347045395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260515,3 +260567,4 @@ SceneRoots:
   - {fileID: 1589242790}
   - {fileID: 422656145}
   - {fileID: 1329834896}
+  - {fileID: 1346732664}
